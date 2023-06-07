@@ -1,0 +1,24 @@
+<div class="mt-24 sm:mt-32 lg:mt-16">
+  <%= link_to admin_manuscripts_path, class: "inline-flex space-x-6" do %>
+    <span class="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
+      <span>Admin</span>
+      <svg class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  <% end %>
+</div>
+
+<h1 class="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+  Author Status Inquiry System
+</h1>
+
+<p class="mt-6 text-lg leading-8 text-gray-300">
+  Click here to request a status update for your manuscript.
+</p>
+
+<div class="mt-10 flex items-center gap-x-6">
+  <%= link_to manuscript_status_search_path, class: "rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400" do %>
+    View Status
+  <% end %>
+</div>

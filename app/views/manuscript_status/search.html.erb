@@ -1,0 +1,18 @@
+<%= content_for(:title) { "Manuscript Search | ASIS" } %>
+
+<%= render partial: 'form' %>
+
+<% unless @manuscripts.nil? %>
+  <div class="mt-10">
+    <% if @manuscripts.none? %>
+      <p class="px-0 sm:px-4 text-base text-white sm:px-6 lg:px-8">
+        No manuscripts found with manuscript code
+        <code class="text-gray-400"><%= params[:code] %></code> and
+        author surname matching
+        <code class="text-gray-400"><%= params[:last_name] %></code>.
+      </p>
+    <% else %>
+      <%= render partial: 'shared/manuscripts_listing' %>
+    <% end %>
+  </div>
+<% end %>

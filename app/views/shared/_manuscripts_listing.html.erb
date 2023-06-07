@@ -1,0 +1,58 @@
+<h2 class="px-0 sm:px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">
+  Manuscripts
+</h2>
+
+<table class="mt-6 w-full whitespace-nowrap text-left">
+  <colgroup>
+    <col class="w-full sm:w-4/12">
+    <col class="lg:w-4/12">
+    <col class="lg:w-2/12">
+    <col class="lg:w-1/12">
+    <col class="lg:w-1/12">
+  </colgroup>
+  <thead class="border-b border-white/10 text-sm leading-6 text-white">
+    <tr>
+      <th scope="col" class="hidden sm:table-cell py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8">Code</th>
+      <th scope="col" class="py-2 pl-0 pr-8 font-semibold">Title</th>
+      <th scope="col" class="py-2 pl-0 pr-4 font-semibold sm:pr-8 sm:text-left lg:pr-20">Status</th>
+      <th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">Status Date</th>
+      <th scope="col" class="hidden py-2 pl-0 pr-4 font-semibold sm:table-cell sm:pr-6 lg:pr-8">Authors</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-white/5">
+    <% @manuscripts.each do |manuscript| %>
+      <tr>
+        <td class="hidden sm:table-cell py-2 pl-4 pr-8 sm:pl-6 lg:pl-8">
+          <div class="flex items-center gap-x-4">
+            <div class="font-mono text-sm leading-6 text-gray-400">
+              <%= manuscript.code %>
+            </div>
+          </div>
+        </td>
+        <td class="py-2 pl-0 pr-4 sm:table-cell sm:pr-8">
+          <div class="flex gap-x-3">
+            <div class="truncate text-sm font-medium leading-6 text-white">
+              <%= manuscript.title %>
+            </div>
+          </div>
+        </td>
+        <td class="py-2 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
+          <div class="flex items-center justify-end gap-x-2 sm:justify-start">
+            <%= status_indicator(manuscript) %>
+              <div class="text-white sm:block">
+                <%= manuscript.status %>
+              </div>
+          </div>
+        </td>
+        <td class="hidden py-2 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+          <time class="text-gray-400" datetime="2023-01-23">
+            <%= manuscript.status_date %>
+          </time>
+        </td>
+        <td class="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
+          <%= manuscript.authors.map(&:display_name).to_sentence %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

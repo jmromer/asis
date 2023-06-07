@@ -1,0 +1,60 @@
+<form action="<%= manuscript_status_search_path %>" method="GET" class="ml-0 sm:ml-4">
+  <div class="space-y-12">
+    <div class="border-b border-white/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-white">
+        Manuscript Status Lookup
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-gray-400">
+        Enter the manuscript's code and the last name of any of its authors to
+        check its status.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+          <label for="code" class="block text-sm font-medium leading-6 text-white">Manuscript Code</label>
+          <div class="mt-2">
+            <input id="code"
+                   name="code"
+                   type="text"
+                   autocomplete="code"
+                   class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                   placeholder="AJC123"
+                   autofocus="true"
+                   value="<%= params[:code].presence %>"
+                   required
+                   minLength="6"
+                   maxLength="6"
+                   pattern="[a-zA-Z0-9]{6}"
+            >
+            <p class="mt-2 text-sm text-gray-500">Must contain only letters and digits.</p>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="last-name" class="block text-sm font-medium leading-6 text-white">
+            Author last name
+          </label>
+          <div class="mt-2">
+            <input type="text"
+                   name="last_name"
+                   id="last_name"
+                   autocomplete="last_name"
+                   class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                   placeholder="Smith"
+                   value="<%= params[:last_name].presence %>"
+                   required
+                   minLength="2"
+                   maxLength="30">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <%= link_to "Clear", manuscript_status_search_path, class: 'text-sm font-semibold leading-6 text-white' %>
+    <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+      Check Status
+    </button>
+  </div>
+</form>

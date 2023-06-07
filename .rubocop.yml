@@ -1,0 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  AutoCorrect: true
+Metrics/AbcSize:
+  Max: 17
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*.rb
+    - lib/tasks/**/*
+    - script/**/*
+    - spec/**/*
